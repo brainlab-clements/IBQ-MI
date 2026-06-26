@@ -1116,7 +1116,7 @@ pi_df <- bind_rows(pi, .id = "group_id")
 # write.csv(pi_df, file = file8, row.names = FALSE)
 
 #----------------------------
-# Strict invariance (attempt)
+# Strict invariance
 #----------------------------
 strictfit <- measEq.syntax(
   configural.model = confit,
@@ -1128,7 +1128,7 @@ strictfit <- measEq.syntax(
 fit_comp <- compareFit(confit, weakfit, strongfit, strictfit, nested = TRUE)
 summary(fit_comp)
 #----------------------------
-# Remove 3-year-olds (non-convergence issue)
+# Remove 3-month-olds 
 #----------------------------
 age_invar_data2 <- subset(age_invar_data, age_group != "3")
 age_invar_data2$age_group <- droplevels(age_invar_data2$age_group)
@@ -1142,7 +1142,7 @@ age_invar_data_eng2$age_group <- droplevels(age_invar_data_eng2$age_group)
 
 
 #----------------------------
-# Configural model (removing 3 year olds)
+# Configural model (removing 3-month-olds)
 #----------------------------
 confit2 <- cfa(cfafromefa4_neg, data = age_invar_data2, std.lv = TRUE, group = "age_group")
 
@@ -1171,7 +1171,7 @@ strongfit <- measEq.syntax(
 modindices(strongfit, sort = TRUE, maximum.number = 20)
 
 #----------------------------
-# Strict invariance (attempt)
+# Strict invariance 
 #----------------------------
 strictfit <- measEq.syntax(
   configural.model = confit2,
@@ -1224,7 +1224,7 @@ age_invar_data3 <- subset(age_invar_data2, age_group != "5")
 age_invar_data3$age <- droplevels(age_invar_data3$age_group)
 
 #----------------------------
-# Configural model (5-mo removed)
+# Configural model (5-month-olds removed)
 #----------------------------
 confit3 <- cfa(cfafromefa4_neg, data = age_invar_data3, std.lv = TRUE, group = "age")
 
