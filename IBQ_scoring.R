@@ -2,7 +2,6 @@
 
 
 ################ LOAD DATASETS #################
-##### After running IBQ_Clean_Code.R, import dataset after removing 15% missing and dx
 
 # [MODIFY] Import cleaned dataset prepared for factor analyses 
 data_ibq <- read.csv("")
