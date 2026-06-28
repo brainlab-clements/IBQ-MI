@@ -73,7 +73,7 @@ emo_clean <- emo_clean %>%
   ))
 
 # Verify age-group counts
-emo_clean <- emo_clean %>%
+emo_clean %>%
   mutate(age_group = case_when(
     age_months >= 2 & age_months <= 3.99 ~ 3,
     age_months >= 4 & age_months <= 5.99 ~ 5,
@@ -123,7 +123,7 @@ bs_clean <- bs_clean %>%
   ))
 
 # Verify age-group counts
-bs_clean <- bs_clean %>%
+bs_clean %>%
   mutate(age_group = case_when(
     ibq_age_months >= 2 & ibq_age_months <= 3.99 ~ 3,
     ibq_age_months >= 4 & ibq_age_months <= 5.99 ~ 5,
@@ -204,7 +204,7 @@ isp_clean <- isp_clean %>%
   ))
 
 # Verify age-group counts
-isp_clean <- isp_clean %>%
+isp_clean %>%
   mutate(age_group = case_when(
     age_months >= 2 & age_months <= 3.99 ~ 3,
     age_months >= 4 & age_months <= 5.99 ~ 5,
