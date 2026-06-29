@@ -916,7 +916,7 @@ efa_replication <- efa_data_subscale_explore[-efa_train, ]
 # and oblimin rotation
 
 efa_cor_matrix_dis <- cor(
-  efa_replication,
+  efa_discovery,
   use = "pairwise.complete.obs"
 )
 
@@ -932,7 +932,7 @@ print(efa_results_dis, cut = 0.25)
 # Calculate model fit indices from raw data
 
 efa_results_dis <- fa(
-  efa_replication,
+  efa_discovery,
   nfactors = 3,
   rotate = "oblimin",
   fm = "ml"
