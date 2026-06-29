@@ -3,7 +3,7 @@
 
 ################ LOAD DATASETS #################
 
-# [MODIFY] Import cleaned dataset prepared for factor analyses 
+# [MODIFY] Import IBQ dataset
 data_ibq <- read.csv("")
 ibq_scoring <- data_ibq
 
@@ -54,22 +54,22 @@ ibq_scoring$approach <- ibq_scoring$approach / 6
 ibq_scoring$voc <- ibq_scoring$voc / 7
 
 # ====================
-# Calculate higher-order factor scores
+# Calculate higher-order dimension scores
 # ====================
 
-# Create dataframes for factor calculation 
+# Create dataframes for dimension calculation 
 ibq_scoring_3fac <- ibq_scoring 
 ibq_scoring_4fac <- ibq_scoring
 
-##################### ORIGINAL 3 FACTOR SCORING ###################
+##################### ORIGINAL 3 FACTOR MODEL  ###################
 
-# Calculate Surgency factor score
+# Calculate Surgency dimension score
 ibq_scoring_3fac$sur <- rowMeans(
   ibq_scoring_3fac[, c('approach', 'voc', 'hipleas', 'smile', 'activ', 'percept')],
   na.rm = TRUE
 )
 
-# Calculate Negative Affectivity factor score
+# Calculate Negative Affectivity dimension score
 ibq_scoring_3fac$neg <- rowMeans(
   cbind(
     ibq_scoring_3fac[, c('sad', 'distress', 'fear')],
@@ -78,42 +78,42 @@ ibq_scoring_3fac$neg <- rowMeans(
   na.rm = TRUE
 )
 
-# Calculate Orienting/Regulatory factor score
+# Calculate Orienting/Regulatory dimension score
 ibq_scoring_3fac$reg <- rowMeans(
   ibq_scoring_3fac[, c('lowpleas', 'cuddl', 'orient', 'sooth')],
   na.rm = TRUE
 )
 
 # [MODIFY]: Add in file path for file output
-write.csv(ibq_scoring_3fac, file = "IBQ_Scoring_3Factor.csv", row.names = FALSE)
+write.csv(ibq_scoring_3fac, file = "IBQ_Scoring_3FactorModel.csv", row.names = FALSE)
 
 ####################### PROPOSED 4 FACTOR MODEL #######################
 
-# Calculate Surgency factor score
+# Calculate Surgency dimension score
 ibq_scoring_4fac$sur <- rowMeans(
   ibq_scoring_4fac[, c('approach', 'voc', 'hipleas', 'smile', 'activ', 'percept')],
   na.rm = TRUE
 )
 
-# Calculate Negative Affectivity factor score
+# Calculate Negative Affectivity dimension score
 ibq_scoring_4fac$neg <- rowMeans(
   ibq_scoring_4fac[, c('sad', 'distress', 'fear', 'activ')],
   na.rm = TRUE
 )
 
-# Calculate Regulatory factor score
+# Calculate Regulatory dimension score
 ibq_scoring_4fac$reg <- rowMeans(
   cbind(
     ibq_scoring_4fac$sooth, 8 - ibq_scoring_4fac$react),
   na.rm = TRUE
 )
 
-# Calculate Sustained Engagement factor score
+# Calculate Sustained Engagement dimension score
 ibq_scoring_4fac$suseng <- rowMeans(
   ibq_scoring_4fac[, c('lowpleas', 'orient')],
   na.rm = TRUE
 )
 
 # [MODIFY]: Add in file path for file output
-write.csv(ibq_scoring_4fac, file = "IBQ_Scoring_4Factor.csv", row.names = FALSE)
+write.csv(ibq_scoring_4fac, file = "IBQ_Scoring_4FactorModel.csv", row.names = FALSE)
 
