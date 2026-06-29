@@ -1,7 +1,14 @@
 ################# IBQ SCORING SYSTEM ##################
 
+# Scoring system for the proposed 4 factor structure based on the existing IBQ-R SF scoring system. 
+# Scoring was adapted to reflect changes in the proposed 4 factor model. 
+# Data should include IBQ R SF items labeled as ibq[number] (e.g., ibq1, ibq2) 
+# Filepath should be set to desginated output location
 
 ################ LOAD DATASETS #################
+
+# [MODIFY] Set working directory
+setwd("")
 
 # [MODIFY] Import IBQ dataset
 data_ibq <- read.csv("")
