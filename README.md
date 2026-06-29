@@ -1,7 +1,7 @@
 # IBQ-MI
 Code for the Infant Behavior Questionnaire Measurement Invariance Project. 
 
-There are two R script files. 
+There are two R script files. Input files should all be .csv files. 
 
 To run analysis, run IBQ_Code_Clean.R. This script contains the cleaning of IBQ data, scoring of IBQ data, factor analysis, and data analyses. 
 
