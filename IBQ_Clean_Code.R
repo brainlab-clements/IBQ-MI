@@ -363,7 +363,7 @@ write.csv(all_withclin, file = file2, row.names = FALSE)
 # Load packages
 # ====================
 
-# Load required packages for data management and factor analyses
+# Load required packages 
 library(dplyr)
 library(lavaan)
 library(semTools)
@@ -388,7 +388,7 @@ yourinitials <- "YK"
 all_data_og <- read.csv("/Volumes/PSY/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output/all_withclin_06-19-2026_YK.csv")
 all_data <- all_data_og
 
-# Remove variables not required for factor analyses
+# Remove variables not required for analyses
 all_data <- all_data %>%
   dplyr::select(-age_months, -age_days, -dx)
 
@@ -525,7 +525,7 @@ clean_data %>%
   count(dx)
 
 # ====================
-# Create factor analysis sample
+# Create analysis sample
 # ====================
 
 # Exclude participants with ASD diagnoses while retaining missing diagnostic classifications
@@ -1037,14 +1037,14 @@ parameterEstimates(test_cfa_eng, standardized = TRUE)
 #plot CFA
 semPaths(
   test_cfa,
-  whatLabels = "std",    # show standardized loadings
-  layout = "tree",       # hierarchical layout
+  whatLabels = "std",    
+  layout = "tree",      
   edge.color = "black",
-  sizeMan = 6,           # item node size
-  sizeLat = 6,          # factor node size
-  nCharNodes = 0,        # full item names
-  residuals = TRUE,      # show residuals
-  exoCov = TRUE,        # hide covariances among exogenous variables
+  sizeMan = 6,          
+  sizeLat = 6,          
+  nCharNodes = 0,        
+  residuals = TRUE,     
+  exoCov = TRUE,        
   intercepts = FALSE
 )
 
@@ -1052,7 +1052,7 @@ semPaths(
 ############ AGE INVARIANCE ##########
 
 #----------------------------
-# Setup age invariance data + make age = factor
+# Setup age invariance data
 #----------------------------
 age_invar_data <- efa_data
 age_invar_data$age_group <- as.factor(age_invar_data$age_group)
