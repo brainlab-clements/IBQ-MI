@@ -111,7 +111,7 @@ ibq_scoring_4fac$neg <- rowMeans(
 # Calculate Regulatory dimension score
 ibq_scoring_4fac$reg <- rowMeans(
   cbind(
-    ibq_scoring_4fac$sooth, 8 - ibq_scoring_4fac$react),
+    ibq_scoring_4fac$sooth, ibq_scoring_4fac$react),
   na.rm = TRUE
 )
 
