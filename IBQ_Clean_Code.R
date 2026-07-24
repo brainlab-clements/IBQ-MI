@@ -23,7 +23,7 @@ library(haven)
 # ====================
 
 # Set project directory
-setwd("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI")
+setwd("/Downloads/01_Yvonne_IBQ_ageMI")
 
 # Store run date and analyst initials for file naming
 date_str <- format(Sys.Date(), "%m-%d-%Y")
@@ -36,7 +36,7 @@ yourinitials <- "YK" #[MODIFY YOUR INITIALS]
 # ====================
 
 # Import raw EMO IBQ data
-emo_orig <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/raw/emo_ibq_RAW.csv")
+emo_orig <- read.csv("/Downloads/emo_ibq_RAW.csv")
 emo <- emo_orig
 
 # Standardize participant ID variable name
@@ -47,7 +47,7 @@ emo_clean <- emo %>%
 colnames(emo_clean) <- gsub("^ibqsf", "ibq", colnames(emo_clean))
 
 # Import age information
-emo_demographics <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/input/emo_demographics_age.csv")
+emo_demographics <- read.csv("/Downloads/emo_demographics_age.csv")
 
 # Merge age information into EMO dataset
 emo_clean <- emo_clean %>%
@@ -100,14 +100,14 @@ emo_clean[emo_clean == 99] <- NA
 emo_clean[emo_clean == 9] <- NA
 
 # Export cleaned EMO dataset
-write.csv(emo_clean, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output/emo_clean.csv", row.names = FALSE)
+write.csv(emo_clean, file = "/Downloads/emo_clean.csv", row.names = FALSE)
 
 # ====================
 # BabySteps study (BSP): Data cleaning
 # ====================
 
 # Import raw BSP IBQ data
-bs_orig <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/raw/bsp_ibq_RAW.csv") 
+bs_orig <- read.csv("/Downloads/bsp_ibq_RAW.csv") 
 bs <- bs_orig
 
 # Remove study-specific administrative variables
@@ -150,7 +150,7 @@ bs_clean <- bs_clean %>%
   dplyr::select(studyid, age_group, ibq_age_months, study, everything())
 
 # Export cleaned BSP dataset
-write.csv(bs_clean, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output/bs_clean.csv", row.names = FALSE)
+write.csv(bs_clean, file = "/Downloads/bs_clean.csv", row.names = FALSE)
 
 
 # ====================
@@ -158,7 +158,7 @@ write.csv(bs_clean, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/Studen
 # ====================
 
 # Import raw ISP2 IBQ data
-isp_orig <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/raw/isp2_ibq_RAW.csv") 
+isp_orig <- read.csv("/Downloads/isp2_ibq_RAW.csv") 
 isp <- isp_orig
 
 # Standardize participant ID variable name
@@ -166,7 +166,7 @@ isp_clean <- isp %>%
   rename(studyid = study_id)
 
 # Import age information from the 3-month assessment
-isp_3_age <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/input/isp2_3mo_age.csv")
+isp_3_age <- read.csv("/Downloads/isp2_3mo_age.csv")
 
 # Standardize event name variable for merging
 isp_3_age <- isp_3_age %>%
@@ -244,7 +244,7 @@ isp_clean <- isp_clean %>%
 isp_clean[isp_clean == 999] <- NA
 
 # Export cleaned ISP2 dataset
-write.csv(isp_clean, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output/isp_clean.csv", row.names = FALSE)
+write.csv(isp_clean, file = "/Downloads/isp_clean.csv", row.names = FALSE)
 
 # ====================
 # Harmonize datasets and combine studies
@@ -283,7 +283,7 @@ isp_merge <- isp_merge %>%
 all_datasets <- bind_rows(emo_merge, bs_merge, isp_merge)
 
 # Export merged dataset
-file1 <- file.path("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output", paste0("all_datasets_", date_str,"_", yourinitials, ".csv", sep=""))
+file1 <- file.path("/Downloads/output", paste0("all_datasets_", date_str,"_", yourinitials, ".csv", sep=""))
 write.csv(all_datasets, file = file1, row.names = FALSE)
 
 
@@ -292,11 +292,11 @@ write.csv(all_datasets, file = file1, row.names = FALSE)
 # ====================
 
 # Import clinical judgment datasets
-ispclin_orig <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/clin_judgement/isp_clinjudge.csv") 
+ispclin_orig <- read.csv("/Downloads/isp_clinjudge.csv") 
 ispclin <- ispclin_orig
-bspclin_orig <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/clin_judgement/BSP_Clinical-judgement_2026-02-06.csv")
+bspclin_orig <- read.csv("/Downloads/BSP_Clinical-judgement_2026-02-06.csv")
 bspclin <- bspclin_orig
-emoclin_orig <-read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/clin_judgement/emo_demographics.csv")
+emoclin_orig <-read.csv("/Downloads/emo_demographics.csv")
 emoclin <- emoclin_orig
 
 # Confirm EMO participants do not appear in clinical judgment files
@@ -357,7 +357,7 @@ all_withclin <- subset(
 )
 
 # Export final analytic dataset
-file2 <- file.path("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output", paste0("all_withclin_", date_str, "_", yourinitials, ".csv", sep=""))
+file2 <- file.path("/Downloads/output", paste0("all_withclin_", date_str, "_", yourinitials, ".csv", sep=""))
 write.csv(all_withclin, file = file2, row.names = FALSE)
 
 
@@ -377,7 +377,7 @@ library(psych)
 # ====================
 
 # Set project directory
-setwd("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI")
+setwd("/Downloads/01_Yvonne_IBQ_ageMI")
 
 # Store run date and analyst initials for file naming
 date_str <- format(Sys.Date(), "%m-%d-%Y")
@@ -388,7 +388,7 @@ yourinitials <- "YK"
 # ====================
 
 # Import merged dataset prior to reverse scoring
-all_data_og <- read.csv("/Volumes/PSY/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output/all_withclin_06-19-2026_YK.csv")
+all_data_og <- read.csv("/Downloads/all_withclin_06-19-2026_YK.csv")
 all_data <- all_data_og
 
 # Remove variables not required for analyses
@@ -415,7 +415,7 @@ all_data$ibq73 <- 8 - all_data$ibq73
 
 # Export reverse-scored dataset
 file3 <- file.path(
-  "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output",
+  "/Downloads/output",
   paste0("all_data_", date_str, "_", yourinitials, "_reversed.csv", sep = "")
 )
 write.csv(all_data, file = file3, row.names = FALSE)
@@ -454,7 +454,7 @@ NA_dataset <- merge(
 
 # Export missing data report
 file4 <- file.path(
-  "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output",
+  "/Downloads/output",
   paste0("missing_data_", date_str, "_", yourinitials, ".csv", sep = "")
 )
 write.csv(NA_dataset, file = file4, row.names = FALSE)
@@ -483,7 +483,7 @@ count(clean_data %>% filter(study == "isp"))
 
 # Export cleaned dataset
 file5 <- file.path(
-  "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output",
+  "/Downloads/output",
   paste0("cleaned_data_all_", date_str, "_", yourinitials, ".csv", sep = "")
 )
 write.csv(clean_data, file = file5, row.names = FALSE)
@@ -494,7 +494,7 @@ write.csv(clean_data, file = file5, row.names = FALSE)
 
 # Import BSP language administration data
 bsp_lang_admin <- read.csv(
-  "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/input/bsp_language.csv"
+  "/Downloads/bsp_language.csv"
 )
 
 # Ensure participant IDs are stored as character strings
@@ -548,7 +548,7 @@ count(clean_data_factor %>% filter(study == "isp"))
 
 # Export final factor analysis dataset
 file6 <- file.path(
-  "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output",
+  "/Downloads/output",
   paste0("data_factor_analysis_", date_str, "_", yourinitials, ".csv", sep = "")
 )
 write.csv(clean_data_factor, file = file6, row.names = FALSE)
@@ -589,7 +589,7 @@ library(multilevel)
 # ====================
 
 # Set project directory
-setwd("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI")
+setwd("/Downloads/01_Yvonne_IBQ_ageMI")
 
 # Store run date and analyst initials for file naming
 date_str <- format(Sys.Date(), "%m-%d-%Y")
@@ -600,7 +600,7 @@ yourinitials <- "YK"
 # ====================
 
 # Import cleaned dataset prepared for factor analyses
-clean_data_factor <- read.csv("/Volumes/PSY/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output/data_factor_analysis_06-19-2026_YK.csv")
+clean_data_factor <- read.csv("/Downloads/data_factor_analysis_06-19-2026_YK.csv")
 
 # Remove missing data summary variables not needed for analyses
 clean_data_factor <- clean_data_factor %>%
@@ -669,7 +669,7 @@ clean_data_factor$reg <- rowMeans(
 
 # Export dataset with calculated subscale and factor scores
 file7 <- file.path(
-  "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/output",
+  "/Downloads/output",
   paste0("data_analysis_all_calculated_", date_str, "_", yourinitials, ".csv", sep = "")
 )
 write.csv(clean_data, file = file7, row.names = FALSE)
@@ -1334,9 +1334,9 @@ summary(fit_comp)
 ########################################
 
 #Upload demographic data
-isp_demo <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/demographics/isp2_demographics_Finalized.csv")
-emo_demo <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/demographics/Emo-Demographics_SES_inf_2y_trimmed.csv.csv")
-bsp_demo <- read.csv("/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/demographics/2_BSP_scrp_demographics_simple.csv")
+isp_demo <- read.csv("/Downloads/isp2_demographics_Finalized.csv")
+emo_demo <- read.csv("/Downloads/Emo-Demographics_SES_inf_2y_trimmed.csv.csv")
+bsp_demo <- read.csv("/Downloads/2_BSP_scrp_demographics_simple.csv")
 
 #Filter clean data by study
 clean_data_factor_isp <- clean_data_factor %>%
@@ -1358,7 +1358,7 @@ isp_demo <- isp_demo %>%
 isp_demo_final <- clean_data_factor_isp %>%
   left_join(isp_demo, by = c("studyid" = "study_id"))
 
-write.csv(isp_demo_final, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/demographics/isp_demo_pub_06192026.csv", row.names = F)
+write.csv(isp_demo_final, file = "/Downloads/isp_demo_pub_06192026.csv", row.names = F)
 
 #Emotion
 clean_data_factor_emo <- clean_data_factor_emo %>%
@@ -1372,7 +1372,7 @@ emo_demo <- emo_demo %>%
 emo_demo_final <- clean_data_factor_emo %>%
   left_join(emo_demo, by = c("studyid" = "subj"))
 
-write.csv(emo_demo_final, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/demographics/emo_demo_pub_06192026.csv", row.names = F)
+write.csv(emo_demo_final, file = "/Downloads/emo_demo_pub_06192026.csv", row.names = F)
 
 
 #BabySteps
@@ -1387,7 +1387,7 @@ bsp_demo <- bsp_demo %>%
 bsp_demo_final <- clean_data_factor_bsp %>%
   left_join(bsp_demo, by = c("studyid"))
 
-write.csv(bsp_demo_final, file = "/Volumes/psy/BrainLab/BrainLab-Everyone-write/StudentWIPs/01_Yvonne_IBQ_ageMI/data/demographics/bsp_demo_pub_06192026.csv", row.names = F)
+write.csv(bsp_demo_final, file = "/Downloads/bsp_demo_pub_06192026.csv", row.names = F)
 
 
 
