@@ -5,6 +5,7 @@
 ##### After running IBQ_Clean_Code.R, import dataset after removing 15% missing and dx
 
 # [MODIFY] Import cleaned dataset prepared for factor analyses 
+##### For sample code, use IBQ_itemscore_sample.csv
 data_ibq <- read.csv("")
 ibq_scoring <- data_ibq
 
