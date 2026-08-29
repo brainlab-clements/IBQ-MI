@@ -791,6 +791,17 @@ summary(fit_nocud, rsquare=TRUE, stand=TRUE, fit.measures=TRUE)
 fitMeasures(fit_nocud, c("chisq", "df", "pvalue","cfi", "tli", "rmsea", "srmr"))
 semPaths(fit_nocud, "std", sizeLat = 7, edge.label.cex = 0.75)
 
+# ----------------------------------------------------------------------------
+# Gartstein et al. (2005) Model
+# ----------------------------------------------------------------------------
+gartstein2005fit <- '
+  surg =~ voc + percept + approach + activ + smile + fear + react
+  negemo =~ percept + approach + activ + smile + fear + distress + react + sad + orient
+  regu =~ orient + sooth + lowpleas
+'
+gart2005fit <- cfa(gartstein2005fit, data=clean_data_factor, estimator="MLR")
+summary(gart2005fit, rsquare=TRUE, stand=TRUE, fit.measures=TRUE)
+fitMeasures(gart2005fit, c("chisq", "df", "pvalue","cfi", "tli", "rmsea", "srmr"))
 
 # ----------------------------------------------------------------------------
 # Bosquet-Enlow et al. Model
